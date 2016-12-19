@@ -20,7 +20,7 @@ requires = ['Sphinx>=1.0']
 
 setup(
     name='sphinxcontrib-restbuilder',
-    version='0.1',
+    version='0.11',
     url='http://bitbucket.org/birkenfeld/sphinx-contrib',
     download_url='http://pypi.python.org/pypi/sphinxcontrib-restbuilder',
     license='BSD', # 2-clause
