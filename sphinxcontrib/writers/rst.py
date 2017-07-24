@@ -43,6 +43,7 @@ class RstWriter(writers.Writer):
 
 class RstTranslator(TextTranslator):
     sectionchars = '*=-~"+`'
+    parent_object_types = set(('class', 'exception', 'method', 'function'))
 
     def __init__(self, document, builder):
         TextTranslator.__init__(self, document, builder)
@@ -211,13 +212,13 @@ class RstTranslator(TextTranslator):
         self.end_state()
 
     def visit_desc_signature(self, node):
-        if node.parent['objtype'] in ('class', 'exception', 'method', 'function'):
+        if node.parent['objtype'] in self.parent_object_types:
             self.add_text('**')
         else:
             self.add_text('``')
 
     def depart_desc_signature(self, node):
-        if node.parent['objtype'] in ('class', 'exception', 'method', 'function'):
+        if node.parent['objtype'] in self.parent_object_types:
             self.add_text('**')
         else:
             self.add_text('``')
